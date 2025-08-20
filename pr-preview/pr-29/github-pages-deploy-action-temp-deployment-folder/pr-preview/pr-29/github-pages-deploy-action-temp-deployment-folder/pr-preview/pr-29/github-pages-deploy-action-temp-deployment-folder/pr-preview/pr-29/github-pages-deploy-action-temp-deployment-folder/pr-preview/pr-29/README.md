@@ -11,8 +11,6 @@ groups. Try the live demo at
 - Responsive design that works on mobile and desktop
 - Light and dark themes with a sun/moon toggle that remembers your choice
 - Itemized transactions with proportional tax and tip
-- Non-itemized split fields are disabled when a transaction is itemized
-- Unnamed transactions display numbered placeholders like "Transaction 4"
 - Shareable URLs encoding the current calculator state
 - Optional session pool name to label each set of transactions
 - Save and load named pools using browser local storage with a table of saved
@@ -20,8 +18,6 @@ groups. Try the live demo at
   a quick **New Pool** reset
 - Compact people list layout with clearly marked delete actions
 - Split sections show helpful messages when empty and flag unsaved pool changes
-- Summary totals prefix minus signs before dollar amounts for consistent
-  formatting
 
 ## Getting Started
 

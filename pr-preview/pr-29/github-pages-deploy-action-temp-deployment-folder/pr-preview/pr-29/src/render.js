@@ -296,7 +296,8 @@ function createTransactionRow(t, i) {
   const nameCell = document.createElement("td");
   const nameInput = document.createElement("input");
   nameInput.type = "text";
-  nameInput.value = t.name || `Transaction ${i + 1}`;
+  nameInput.value = t.name || "";
+  nameInput.placeholder = `Transaction ${i + 1}`;
   nameInput.id = `transaction-name-${i}`;
   nameInput.setAttribute("aria-label", `Transaction ${i + 1} name`);
   nameInput.addEventListener("change", (e) =>
@@ -364,7 +365,7 @@ function createAddTransactionRow() {
   const addNameInput = document.createElement("input");
   addNameInput.type = "text";
   addNameInput.id = "new-t-name";
-  addNameInput.placeholder = "Name (optional)";
+  addNameInput.placeholder = `Transaction ${transactions.length + 1}`;
   addNameInput.setAttribute("aria-label", "New transaction name");
   addNameCell.appendChild(addNameInput);
   addRow.appendChild(addNameCell);
