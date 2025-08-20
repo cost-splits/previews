@@ -159,9 +159,12 @@ td:first-child {
   align-items: center;
 }
 
+.unused-row {
+  background-color: var(--warning-bg);
+}
+
 .unused-row input {
-  background-color: var(--muted-bg);
-  color: var(--border-color);
+  text-decoration: line-through;
 }
 
 .invalid-cell {
