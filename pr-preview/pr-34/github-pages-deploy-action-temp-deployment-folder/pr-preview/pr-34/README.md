@@ -9,9 +9,9 @@ groups. Try the live demo at
 ## Features
 
 - Responsive layout for phones and desktops
-- Clear section bubbles with subtle contrast for easy scanning
-- Light blue theme with complementary accents and soft backgrounds for a
-  consistent look
+- Clear sky-blue section bubbles with subtle contrast for easy scanning
+- Slightly darker gray page background with sky-blue bubbles, complementary
+  orange buttons, and subtle shadows for a consistent look
 - Itemized and non-itemized transactions with proportional tax and tip
 - Shareable URLs and optional named session pools stored locally
 - Compact participant list with clear totals
