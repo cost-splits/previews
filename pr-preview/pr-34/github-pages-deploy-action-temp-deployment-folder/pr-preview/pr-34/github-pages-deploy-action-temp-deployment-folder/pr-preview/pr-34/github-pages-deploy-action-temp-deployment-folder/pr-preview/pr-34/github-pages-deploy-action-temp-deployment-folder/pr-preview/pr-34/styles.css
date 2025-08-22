@@ -1,12 +1,11 @@
 /* Theme variables */
 :root {
   --primary-color: #5bc0eb;
-  --accent-color: #ff9f1c;
+  --accent-color: #ffb870;
   --border-color: #ccc;
-  --background-color: #f0f2f5;
+  --background-color: #f5f7fa;
   --text-color: #222;
   --muted-bg: #e8edf3;
-  --section-bg: #e6f4ff;
   --alt-row-bg: #f0f3f7;
   --danger-color: #d9534f;
   --warning-bg: #fff8c4;
@@ -17,6 +16,21 @@
   --font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --background-color: #1b1e22;
+  --text-color: #eee;
+  --border-color: #555;
+  --muted-bg: #24272b;
+  --alt-row-bg: #212428;
+  --primary-color: #5bc0eb;
+  --accent-color: #ffb870;
+  --danger-color: #ff7b72;
+  --warning-bg: #665c00;
+  --error-bg: rgba(255, 123, 114, 0.2);
+  --error-tooltip-bg: #3d1a1a;
+  --error-tooltip-color: #ff7b72;
 }
 
 html {
@@ -69,15 +83,12 @@ textarea {
 button {
   margin: calc(var(--spacing) / 2) 0;
   padding: var(--spacing) calc(var(--spacing) * 2);
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  transition:
-    filter 0.2s,
-    box-shadow 0.2s;
+  transition: filter 0.2s;
 }
 
 button + button {
@@ -87,7 +98,11 @@ button + button {
 button:hover,
 button:focus {
   filter: brightness(0.9);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:not(.danger-btn):hover,
+button:not(.danger-btn):focus {
+  background-color: var(--accent-color);
 }
 
 table {
@@ -175,6 +190,11 @@ td:first-child {
   text-decoration: line-through;
 }
 
+:root[data-theme="dark"] .unused-row input {
+  background-color: #2a2a2a;
+  color: #888;
+}
+
 .invalid-cell {
   background-color: var(--error-bg);
 }
@@ -237,23 +257,35 @@ input[data-action="editItemSplit"] {
   max-width: 100%;
 }
 
-.section-block {
-  background-color: var(--section-bg);
-  padding: calc(var(--spacing) * 2);
-  border-radius: 0.5rem;
-  margin: calc(var(--spacing) * 2) 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.section-block h2 {
-  margin-top: 0;
-}
-
 .flex-row {
   display: flex;
   align-items: center;
   gap: calc(var(--spacing) / 2);
   margin: calc(var(--spacing) / 2) 0;
+}
+
+#theme-toggle {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 1.5rem;
+  padding: calc(var(--spacing) / 2);
+  border-radius: 0.25rem;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+#theme-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+:root[data-theme="dark"] #theme-toggle {
+  color: #000;
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus {
+  background-color: var(--accent-color);
 }
 
 .readonly-field {
@@ -305,6 +337,10 @@ footer {
   height: 1.5rem;
   vertical-align: middle;
   margin-left: calc(var(--spacing) / 2);
+}
+
+:root[data-theme="dark"] .github-icon {
+  filter: invert(1);
 }
 
 @media (max-width: 600px) {
