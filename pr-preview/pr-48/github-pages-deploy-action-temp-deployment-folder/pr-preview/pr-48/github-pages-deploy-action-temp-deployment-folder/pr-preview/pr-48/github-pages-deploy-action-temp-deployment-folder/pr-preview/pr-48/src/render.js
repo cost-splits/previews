@@ -115,31 +115,15 @@ function renderSavedPoolsTable() {
     const data = pools[name] || { people: [], transactions: [] };
     const row = document.createElement("tr");
 
-    const orderCell = document.createElement("td");
-    const buttonWrap = document.createElement("div");
-    buttonWrap.className = "reorder-buttons";
-    const upBtn = document.createElement("button");
-    upBtn.textContent = "▲";
-    upBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (i > 0) {
-        reorderSavedPools(i, i - 1);
-        renderSavedPoolsTable();
-      }
+    const handle = document.createElement("td");
+    handle.className = "drag-handle";
+    handle.textContent = "⋮⋮";
+    handle.draggable = true;
+    handle.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", String(i));
     });
-    const downBtn = document.createElement("button");
-    downBtn.textContent = "▼";
-    downBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (i < names.length - 1) {
-        reorderSavedPools(i, i + 1);
-        renderSavedPoolsTable();
-      }
-    });
-    buttonWrap.appendChild(upBtn);
-    buttonWrap.appendChild(downBtn);
-    orderCell.appendChild(buttonWrap);
-    row.appendChild(orderCell);
+    handle.addEventListener("click", (e) => e.stopPropagation());
+    row.appendChild(handle);
 
     const nameCell = document.createElement("td");
     nameCell.textContent = name;
@@ -180,6 +164,14 @@ function renderSavedPoolsTable() {
         return;
       }
       loadPoolFromLocalStorage(name);
+      renderSavedPoolsTable();
+    });
+    row.addEventListener("dragover", (e) => e.preventDefault());
+    row.addEventListener("drop", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const from = Number(e.dataTransfer.getData("text/plain"));
+      reorderSavedPools(from, i);
       renderSavedPoolsTable();
     });
     tbody.appendChild(row);
