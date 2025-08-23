@@ -29,7 +29,6 @@ import {
   savePoolToLocalStorage,
   loadPoolFromLocalStorage,
   listSavedPools,
-  reorderSavedPools,
   startNewPool,
   downloadJson,
 } from "../src/share.js";
@@ -463,26 +462,7 @@ describe("local storage helpers", () => {
   test("listSavedPools returns stored names", () => {
     savePoolToLocalStorage("a", { people: [], transactions: [] });
     savePoolToLocalStorage("b", { people: [], transactions: [] });
-    expect(listSavedPools()).toEqual(["a", "b"]);
-  });
-
-  test("reorderSavedPools reorders saved names", () => {
-    savePoolToLocalStorage("a", { people: [], transactions: [] });
-    savePoolToLocalStorage("b", { people: [], transactions: [] });
-    savePoolToLocalStorage("c", { people: [], transactions: [] });
-    reorderSavedPools(2, 0);
-    expect(listSavedPools()).toEqual(["c", "a", "b"]);
-  });
-
-  test("arrow buttons move saved pool rows", () => {
-    savePoolToLocalStorage("a", { people: [], transactions: [] });
-    savePoolToLocalStorage("b", { people: [], transactions: [] });
-    renderSavedPoolsTable();
-    const downBtn = document.querySelector(
-      "#saved-pools-table tbody tr:first-child .reorder-buttons button:last-child",
-    );
-    downBtn.click();
-    expect(listSavedPools()).toEqual(["b", "a"]);
+    expect(listSavedPools().sort()).toEqual(["a", "b"]);
   });
 
   test("renderSavedPoolsTable populates DOM, highlights and deletes pool", () => {
@@ -500,7 +480,7 @@ describe("local storage helpers", () => {
       "#saved-pools-table tbody tr.active-pool",
     );
     expect(active).not.toBeNull();
-    const btn = active.querySelector("button.danger-btn");
+    const btn = active.querySelector("button");
     btn.click();
     expect(listSavedPools()).toEqual([]);
   });

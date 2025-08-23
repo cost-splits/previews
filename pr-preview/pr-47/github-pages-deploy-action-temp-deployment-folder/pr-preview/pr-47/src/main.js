@@ -22,7 +22,6 @@ import {
   hasUnsavedChanges,
   updatePoolSaveStatus,
 } from "./share.js";
-import { initTabs } from "./tabs.js";
 
 setAfterChange(() => {
   updateCurrentStateJson();
@@ -35,8 +34,6 @@ setAfterChange(() => {
 startNewPool();
 loadStateFromUrl();
 renderSavedPoolsTable();
-
-initTabs();
 
 // UI bindings
 document
