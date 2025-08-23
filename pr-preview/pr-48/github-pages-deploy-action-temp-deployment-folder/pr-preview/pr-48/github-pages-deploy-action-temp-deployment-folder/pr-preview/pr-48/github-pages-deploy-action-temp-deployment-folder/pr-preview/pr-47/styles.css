@@ -38,6 +38,32 @@ h1 {
   color: var(--primary-color);
 }
 
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing);
+  padding: calc(var(--spacing) * 2);
+  margin-bottom: calc(var(--spacing) * 2);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.site-header img {
+  height: 3rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  color: #fff;
+}
+
 h2 {
   margin-top: calc(var(--spacing) * 4);
 }
@@ -150,36 +176,6 @@ tbody tr.row-odd {
   color: #fff;
 }
 
-#saved-pools-table .reorder-buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--spacing) / 4);
-  width: auto;
-}
-
-#saved-pools-table .reorder-buttons button {
-  margin: 0;
-  padding: 0;
-  background: none;
-  color: inherit;
-  border: none;
-  line-height: 1;
-  box-shadow: none;
-}
-
-#saved-pools-table tr.active-pool .reorder-buttons button {
-  background: none;
-  color: inherit;
-}
-
-#saved-pools-table .reorder-buttons button:hover,
-#saved-pools-table .reorder-buttons button:focus {
-  filter: none;
-  box-shadow: none;
-}
-
 #transaction-table {
   table-layout: auto;
   width: 100%;
@@ -194,10 +190,6 @@ td {
 }
 
 td:first-child {
-  text-align: left;
-}
-
-#saved-pools-table td:nth-child(2) {
   text-align: left;
 }
 
