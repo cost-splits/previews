@@ -19,8 +19,6 @@ import {
   deletePoolFromLocalStorage,
   LOCAL_STORAGE_KEY,
   hasUnsavedChanges,
-  listSavedPools,
-  reorderSavedPools,
 } from "./share.js";
 
 const COST_FORMAT_MSG =
@@ -93,7 +91,7 @@ function renderSavedPoolsTable() {
 
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
-  ["", "Pool", "People", "Transactions", "Actions"].forEach((h) => {
+  ["Pool", "People", "Transactions", "Actions"].forEach((h) => {
     const th = document.createElement("th");
     th.textContent = h;
     headerRow.appendChild(th);
@@ -110,35 +108,8 @@ function renderSavedPoolsTable() {
     pools = {};
   }
 
-  const names = listSavedPools();
-  names.forEach((name, i) => {
-    const data = pools[name] || { people: [], transactions: [] };
+  Object.entries(pools).forEach(([name, data]) => {
     const row = document.createElement("tr");
-
-    const orderCell = document.createElement("td");
-    orderCell.className = "reorder-buttons";
-    const upBtn = document.createElement("button");
-    upBtn.textContent = "▲";
-    upBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (i > 0) {
-        reorderSavedPools(i, i - 1);
-        renderSavedPoolsTable();
-      }
-    });
-    const downBtn = document.createElement("button");
-    downBtn.textContent = "▼";
-    downBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (i < names.length - 1) {
-        reorderSavedPools(i, i + 1);
-        renderSavedPoolsTable();
-      }
-    });
-    orderCell.appendChild(upBtn);
-    orderCell.appendChild(downBtn);
-    row.appendChild(orderCell);
-
     const nameCell = document.createElement("td");
     nameCell.textContent = name;
     row.appendChild(nameCell);

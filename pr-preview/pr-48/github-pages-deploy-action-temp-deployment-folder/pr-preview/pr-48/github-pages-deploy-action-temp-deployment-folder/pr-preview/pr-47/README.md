@@ -9,6 +9,8 @@ groups. Try the live demo at
 ## Features
 
 - Responsive layout for phones and desktops
+- Branded header with gradient background and logo for a polished first
+  impression
 - Clear sky-blue section bubbles with subtle contrast for easy scanning
 - Slightly darker gray page background with sky-blue bubbles, complementary
   orange buttons, and subtle shadows for a consistent look
@@ -16,7 +18,6 @@ groups. Try the live demo at
 - Tables outlined with subtle borders and rounded corners for a softer look
 - Itemized and non-itemized transactions with proportional tax and tip
 - Shareable URLs and optional named session pools stored locally
-- Up and down arrows to reorder saved pools
 - Warns before discarding unsaved changes when switching pools
 - Compact participant list with clear totals
 - External footer links open in new tabs with security safeguards
