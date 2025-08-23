@@ -1,6 +1,5 @@
 /**
- * @file Provides tabbed navigation between site sections such as calculator,
- * about, and tutorials.
+ * @file Provides tabbed navigation between calculator and about sections.
  */
 
 /**
