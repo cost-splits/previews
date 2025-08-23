@@ -1067,10 +1067,9 @@ function showPersonSummary(index) {
   container.id = "person-summary";
 
   const heading = document.createElement("h3");
-  heading.style.display = "flex";
-  heading.style.justifyContent = "space-between";
-  heading.style.alignItems = "center";
-  heading.textContent = `${people[index]}'s summary`;
+  heading.textContent = `${people[index]} summary`;
+  container.appendChild(heading);
+
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "Close";
   closeBtn.addEventListener("click", () => {
@@ -1082,8 +1081,7 @@ function showPersonSummary(index) {
       .forEach((r) => r.classList.remove("person-highlight"));
     clearPersonHighlights();
   });
-  heading.appendChild(closeBtn);
-  container.appendChild(heading);
+  container.appendChild(closeBtn);
 
   container.appendChild(renderPersonView(index));
 
